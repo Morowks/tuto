@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Art mathématique{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Paramètres :</h1>
+    <!-- C'est grâce à l'attribut name que l'on peut récupérer la valeur associée dans symfony -->
+    <form method="post" action="/calculer">
+        
+        <div>
+            <label for="Amplitude" class="form-label">Amplitude</label>
+                <input type="range" class="form-range" min="0" max="1" step="0.01" id="amplitude" name="amplitude">
+        </div>
+
+        <div>
+            <label for="Amplitude rotation" class="form-label">Amplitude Rotation</label>
+                <input type="range" class="form-range" min="0" max="1" step="0.01" id="amplitude_rota" name="amplitude_rota">
+        </div>
+
+        <div>
+            <label for="Nombre Colonnes" class="form-label">Nombre Colonnes</label>
+                <input type="range" class="form-range" min="0" max="5" step="1" id="nbcolonnes" name="nbcolonnes">
+        </div>
+
+        <div>
+            <label for="Nombre Lignes" class="form-label">Nombre Lignes</label>
+                <input type="range" class="form-range" min="0" max="5" step="1" id="nblignes" name="nblignes">
+        </div>
+
+
+        <div>
+            <button type="submit" class="btn btn-primary" name="calculer" value="1">Calculer</button>
+            <button type="submit" class="btn btn-danger" name="imprimer" value="1">Imprimer</button>
+        </div>
+    </form>
+
+    <h1> Résultat : </h1>
+    <img src="{{fichier}}" width="100%">
+</div>
+{% endblock %}
